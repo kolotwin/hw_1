@@ -58,7 +58,6 @@ print(cal_manhattan(a, b))
 print(cal_cosine(a, b))
 
 
-
 # task №5
 my_array = np.random.randint(0, 2, size=100)
 print(np.max(my_array), np.min(my_array))
