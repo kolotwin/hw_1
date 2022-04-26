@@ -1,6 +1,7 @@
 import math
 import numpy as np
-import scipy.spatial.distance as ds
+from numpy import dot
+from numpy.linalg import norm
 
 # task №1
 def share_bread(N, K):
@@ -48,22 +49,21 @@ def cal_manhattan(a, b):
     return distance
 
 def cal_cosine(a, b):
-    distance = ds.cosine(a, b)
+    distance = dot(a, b)/(norm(a)*norm(b))
     return distance
-
 
 a = np.random.randint(-10, 10, size=10)
 b = np.random.randint(-10, 10, size=10)
-print(cal_euclidean(a, b))
-print(cal_manhattan(a, b))
-print(cal_cosine(a, b))
-
-
+print('Euclidean:', cal_euclidean(a, b))
+print('Manhattan:', cal_manhattan(a, b))
+print('Cosine:', cal_cosine(a, b))
 
 # task №5
-my_array = np.random.randint(0, 2, size=100)
-print(np.max(my_array), np.min(my_array))
-print(my_array)
+my_array = np.random.rand(100)
+Z = (my_array - np.min(my_array))/(np.max(my_array)-np.min(my_array))
+print('max_array =', np.max(Z), '; min_array =', np.min(Z))
+print("array:\n", Z)
+
 
 my_array = np.random.randint(0, 51, size=(5,6))
 selected_column = my_array[:, np.argmax(my_array.max(axis=0))]
